@@ -3,10 +3,10 @@ require('dotenv').config();
 const { execSync } = require('child_process');
 const fs = require('fs');
 
-const circuitsList = process.argv[2];
-const wasmOutPath = process.argv[3];
-const zkeyOutPath = process.argv[4];
-const deterministic = process.argv[5] === 'true';
+const wasmOutPath = process.argv[2];
+const zkeyOutPath = process.argv[3];
+const deterministic = process.argv[4] === 'true';
+const circuitsList = process.argv[5];
 
 // TODO: add an option to generate with entropy for production keys
 
@@ -26,8 +26,10 @@ for (circuitName of circuitsList.split(',')) {
     process.exit(1);
   }
 
-  process.chdir(cwd + '/' + circuitName);
-  
+  process.chdir(cwd + '/circuits/' + circuitName);
+
+  // doesnt catch yet
+  // https://github.com/iden3/snarkjs/pull/75
   try {
     execSync('npx circom circuit.circom --r1cs --wasm --sym', {
       stdio: 'inherit',
@@ -76,20 +78,24 @@ for (circuitName of circuitsList.split(',')) {
       { stdio: 'inherit' }
     );
     execSync(
-      'mkdir -p ../circuits-compiled/' + circuitName,
+      'mkdir -p ./compiled/',
       { stdio: 'inherit' }
     );
     execSync(
-      'mkdir -p ../keys',
+      'mkdir -p ./keys/',
       { stdio: 'inherit' }
     );
     fs.copyFileSync(
       'circuit.wasm',
-      cwd + '/' + wasmOutPath + '/' + circuitName + '/circuit.wasm'
+      cwd + '/circuits/' + circuitName + '/' + wasmOutPath + '/circuit.wasm'
     );
     fs.copyFileSync(
       'circuit.zkey',
-      cwd + '/' + zkeyOutPath + '/' + circuitName + '.zkey'
+      cwd + '/circuits/' + circuitName + '/' + zkeyOutPath + '/circuit_final.zkey'
+    );
+    fs.copyFileSync(
+      'verification_key.json',
+      cwd + '/circuits/' + circuitName + '/' + zkeyOutPath + '/verification_key.json'
     );
   } catch (error) {
     console.log(error);
