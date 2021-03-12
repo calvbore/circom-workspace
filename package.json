@@ -12,6 +12,6 @@
   },
   "scripts": {
     "dev": "node builder.js hash compiled keys true",
-    "compile": "node ./builder.js compiled keys true"
+    "compile": "node ./scripts/compile.js compiled keys true"
   }
 }
