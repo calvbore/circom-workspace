@@ -13,7 +13,7 @@ const circuitsList = process.argv[5];
 if (process.argv.length !== 6) {
   console.log('usage');
   console.log(
-    'builder comma,seperated,list,of,circuits wasm_out_path zkey_out_path [`true` if deterministic / `false` if not]'
+    'compile wasm_out_path zkey_out_path [`true` if deterministic / `false` if not] comma,seperated,list,of,circuits'
   );
   process.exit(1);
 }
@@ -108,7 +108,7 @@ for (circuitName of circuitsList.split(',')) {
       cwd + '/circuits/' + circuitName + '/' + zkeyOutPath + '/verification_key.json'
     );
     fs.unlinkSync('verification_key.json');
-    
+
     execSync(
       'npx snarkjs zkey export solidityverifier keys/circuit_final.zkey contracts/verifier.sol',
       { stdio: 'inherit' }
