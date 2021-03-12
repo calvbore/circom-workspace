@@ -11,7 +11,7 @@ if (process.argv.length !== 3) {
   process.exit(1);
 }
 
-console.log(circuitsList);
+const proofLog = [];
 
 async function run() {
 
@@ -33,8 +33,10 @@ async function run() {
 
     if (res === true) {
         console.log(circuitName + ": Verification OK");
+        proofLog.push(circuitName + ": Verification OK");
     } else {
         console.log(circuitName + ": Invalid proof");
+        proofLog.push(circuitName + ": Invalid proof");
     }
 
   }
@@ -42,6 +44,9 @@ async function run() {
 }
 
 run().then(() => {
+  for (let i = 0; i < proofLog.length; i++) {
+    console.log(proofLog[i]);
+  }
   process.exit(0);
 });
 
