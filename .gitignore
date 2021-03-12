@@ -1,6 +1,4 @@
 node_modules/
-keys/
-compiled/
 **/proof.json
 **/circuit.r1cs
 **/circuit.sym
