@@ -1,8 +1,8 @@
 # circom-workspace
-A basic circom project with jacob rosenthal's scripts. Verifies that a private preimage hashes to a claimed hash.
+A basic circom project forked from [briangu33/circom-starter](https://github.com/briangu33/circom-starter) and inspired by modifications in [nulven/zk-browser](https://github.com/nulven/zk-browser).
 
 `yarn` to install dependencies
 
 `yarn compile <CIRCUIT_NAME>` to compile circuit, generate zkey (deterministic), generate solidity verifier contract, generate a proof for the `input.json` input, and verify the proof.
 
-`yarn verify <CIRCUIT_NAME>` to verify the proof.
+`yarn verify <CIRCUIT_NAME> <OPTIONAL-INPUT.json>` to verify the proof, with optional alternative input json.
