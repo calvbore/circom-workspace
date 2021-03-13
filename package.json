@@ -14,6 +14,6 @@
     "dev": "node builder.js hash compiled keys true",
     "compile": "node ./scripts/compile.js compiled keys true",
     "verify": "node ./scripts/verify.js",
-    "fab": "node ./scripts/fabricate.js"
+    "draft": "node ./scripts/draft.js"
   }
 }

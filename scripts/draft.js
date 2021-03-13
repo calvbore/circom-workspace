@@ -6,7 +6,7 @@ const overwrite = process.argv[3] === "true";
 if (process.argv.length < 3 || process.argv.length > 4) {
   console.log('usage');
   console.log(
-    'fab <CIRCUIT_NAME> <OVERWRITE_EXISTING>'
+    'draft <CIRCUIT_NAME> <OVERWRITE_EXISTING>'
   );
   process.exit(1);
 }
@@ -14,7 +14,7 @@ if (process.argv.length < 3 || process.argv.length > 4) {
 if (process.argv[3] !== undefined && process.argv[3] !== "false" && overwrite != true) {
   console.log('usage');
   console.log(
-    'fab <CIRCUIT_NAME> <OVERWRITE_EXISTING>'
+    'draft <CIRCUIT_NAME> <OVERWRITE_EXISTING>'
   );
   console.log("<OVERWRITE_EXISTING> must set: true | false");
   process.exit(1);

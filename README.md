@@ -7,4 +7,4 @@ A basic circom project forked from [briangu33/circom-starter](https://github.com
 
 `yarn verify <CIRCUIT_NAME> <OPTIONAL-INPUT.json>` to verify the proof, with optional alternative input json.
 
-`yarn fab <CIRCUIT_NAME> <OVERWRITE_EXISTING>` to generate a new circuit template, with option to overwrite circuit with existing name.
+`yarn draft <CIRCUIT_NAME> <OVERWRITE_EXISTING>` to generate a new circuit template, with option to overwrite circuit with existing name.
