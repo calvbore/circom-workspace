@@ -2,8 +2,9 @@ const snarkjs = require("snarkjs");
 const fs = require("fs");
 
 const circuitsList = process.argv[2];
+const inputJson = process.argv[3];
 
-if (process.argv.length !== 3) {
+if (process.argv.length < 3 || process.argv.length > 4) {
   console.log('usage');
   console.log(
     'verify comma,seperated,list,of,circuits'
@@ -17,9 +18,10 @@ async function run() {
 
   for (circuitName of circuitsList.split(',')) {
 
-    const input = JSON.parse(fs.readFileSync("./circuits/" + circuitName + "/input.json"));
+    const input = JSON.parse(fs.readFileSync("./circuits/" + circuitName + "/inputs/" + (inputJson ? inputJson : "input.json")));
 
-    const { proof, publicSignals } = await snarkjs.groth16.fullProve(input,
+    const { proof, publicSignals } = await snarkjs.groth16.fullProve(
+      input,
       "./circuits/" + circuitName + "/compiled/circuit.wasm",
       "./circuits/" + circuitName + "/keys/circuit_final.zkey"
     );
@@ -32,10 +34,10 @@ async function run() {
     const res = await snarkjs.groth16.verify(vKey, publicSignals, proof);
 
     if (res === true) {
-        console.log(circuitName + ": Verification OK");
+        console.info(circuitName + ": Verification OK");
         proofLog.push(circuitName + ": Verification OK");
     } else {
-        console.log(circuitName + ": Invalid proof");
+        console.warn(circuitName + ": Invalid proof");
         proofLog.push(circuitName + ": Invalid proof");
     }
 

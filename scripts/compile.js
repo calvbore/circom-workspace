@@ -66,7 +66,7 @@ for (circuitName of circuitsList.split(',')) {
       { stdio: 'inherit' }
     );
     execSync(
-      'npx snarkjs wtns calculate circuit.wasm input.json witness.wtns',
+      'npx snarkjs wtns calculate circuit.wasm inputs/input.json witness.wtns',
       {
         stdio: 'inherit',
       }
