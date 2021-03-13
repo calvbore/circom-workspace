@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "node builder.js hash compiled keys true",
     "compile": "node ./scripts/compile.js compiled keys true",
-    "verify": "node ./scripts/verify.js"
+    "verify": "node ./scripts/verify.js",
+    "fab": "node ./scripts/fabricate.js"
   }
 }
