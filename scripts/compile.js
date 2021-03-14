@@ -3,17 +3,16 @@ require('dotenv').config();
 const { execSync } = require('child_process');
 const fs = require('fs');
 
-const wasmOutPath = process.argv[2];
-const zkeyOutPath = process.argv[3];
-const deterministic = process.argv[4] === 'true';
-const circuitsList = process.argv[5];
+const circuitsList = process.argv[2];
+const deterministic = process.argv[3] === 'true' || process.argv[3] === undefined;
+
 
 // TODO: add an option to generate with entropy for production keys
 
-if (process.argv.length !== 6) {
+if (process.argv.length < 3 || process.argv.length > 4) {
   console.log('usage');
   console.log(
-    'compile wasm_out_path zkey_out_path [`true` if deterministic / `false` if not] comma,seperated,list,of,circuits'
+    'compile comma,seperated,list,of,circuits [`true` if deterministic / `false` if not]'
   );
   process.exit(1);
 }
@@ -27,6 +26,19 @@ for (circuitName of circuitsList.split(',')) {
   }
 
   process.chdir(cwd + '/circuits/' + circuitName);
+
+  if(!fs.existsSync("compiled")) {
+    fs.mkdirSync("compiled");
+  }
+  if(!fs.existsSync("contracts")) {
+    fs.mkdirSync("contracts");
+  }
+  if(!fs.existsSync("inputs")) {
+    fs.mkdirSync("inputs");
+  }
+  if(!fs.existsSync("keys")) {
+    fs.mkdirSync("keys");
+  }
 
   // doesnt catch yet
   // https://github.com/iden3/snarkjs/pull/75
@@ -62,7 +74,7 @@ for (circuitName of circuitsList.split(',')) {
       );
     }
     execSync(
-      'npx snarkjs zkey export verificationkey circuit.zkey verification_key.json',
+      'npx snarkjs zkey export verificationkey circuit.zkey keys/verification_key.json',
       { stdio: 'inherit' }
     );
     execSync(
@@ -76,43 +88,26 @@ for (circuitName of circuitsList.split(',')) {
       { stdio: 'inherit' }
     );
     execSync(
-      'npx snarkjs groth16 verify verification_key.json public.json proof.json',
-      { stdio: 'inherit' }
-    );
-
-    execSync(
-      'mkdir -p ./compiled/',
-      { stdio: 'inherit' }
-    );
-    execSync(
-      'mkdir -p ./keys/',
-      { stdio: 'inherit' }
-    );
-    execSync(
-      'mkdir -p ./contracts/',
+      'npx snarkjs groth16 verify keys/verification_key.json public.json proof.json',
       { stdio: 'inherit' }
     );
 
     fs.copyFileSync(
       'circuit.wasm',
-      cwd + '/circuits/' + circuitName + '/' + wasmOutPath + '/circuit.wasm'
+      cwd + '/circuits/' + circuitName + '/compiled/circuit.wasm'
     );
     fs.unlinkSync('circuit.wasm');
     fs.copyFileSync(
       'circuit.zkey',
-      cwd + '/circuits/' + circuitName + '/' + zkeyOutPath + '/circuit_final.zkey'
+      cwd + '/circuits/' + circuitName + '/keys/circuit_final.zkey'
     );
     fs.unlinkSync('circuit.zkey');
-    fs.copyFileSync(
-      'verification_key.json',
-      cwd + '/circuits/' + circuitName + '/' + zkeyOutPath + '/verification_key.json'
-    );
-    fs.unlinkSync('verification_key.json');
 
     execSync(
       'npx snarkjs zkey export solidityverifier keys/circuit_final.zkey contracts/verifier.sol',
       { stdio: 'inherit' }
     );
+    // copy files to appropriate places when integrated with scaffold-eth (zkaffold-eth)
   } catch (error) {
     console.log(error);
     process.exit(1);
