@@ -42,7 +42,7 @@ try {
   if(!fs.existsSync(circuitName + "/circuit.circom") || overwrite == true) {
     fs.writeFileSync(
       circuitName + "/circuit.circom",
-      'include "../../node_modules/circomlib/circuits/mimcsponge.circom"\n\ntemplate Main() {\n\n}'
+      'include "../../node_modules/circomlib/circuits/mimcsponge.circom"\n\ntemplate Main() {\n\n}\n\ncomponent main = Main();'
     );
   }
   if(!fs.existsSync(circuitName + "/inputs/input.json") || overwrite == true){
