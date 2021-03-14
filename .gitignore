@@ -2,10 +2,11 @@ node_modules/
 **/proof.json
 **/circuit.r1cs
 **/circuit.sym
-#**/circuit.wasm
+**/circuit.wasm
 **/circuit.zkey
-#**/*.zkey
+**/circuit_*.zkey
+**/*.zkey
 **/public.json
-#**/verification_key.json
-#**/verifier.sol
+**/verification_key.json
+**/verifier.sol
 **/witness.wtns
