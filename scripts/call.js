@@ -16,6 +16,7 @@ if (process.argv.length < 3 || process.argv.length > 4) {
 const ffjavascript = require('ffjavascript');
 const {stringifyBigInts: stringifyBigInts$3, unstringifyBigInts: unstringifyBigInts$1} = ffjavascript.utils;
 
+// copy pasta p256 from snarkjs cli.cjs line 6726
 function p256(n) {
     let nstr = n.toString(16);
     while (nstr.length < 64) nstr = "0"+nstr;
@@ -23,6 +24,7 @@ function p256(n) {
     return nstr;
 }
 
+// copy pasta zkeyExportSolidityCalldata from snarkjs cli.cjs line 6984 and some modifications.
 async function genSolidityCalldata(publicName, proofName) {
 
     // const pub = unstringifyBigInts$1(JSON.parse(publicName, "utf8"));

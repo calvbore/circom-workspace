@@ -15,6 +15,6 @@
     "compile": "node ./scripts/compile.js",
     "verify": "node ./scripts/verify.js",
     "draft": "node ./scripts/draft.js",
-    "hoot": "node ./scripts/hoot.js"
+    "call": "node ./scripts/call.js"
   }
 }
