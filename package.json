@@ -14,6 +14,7 @@
     "dev": "node builder.js hash compiled keys true",
     "compile": "node ./scripts/compile.js",
     "verify": "node ./scripts/verify.js",
-    "draft": "node ./scripts/draft.js"
+    "draft": "node ./scripts/draft.js",
+    "hoot": "node ./scripts/hoot.js"
   }
 }
