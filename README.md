@@ -8,3 +8,5 @@ A basic circom project forked from [briangu33/circom-starter](https://github.com
 `yarn verify <CIRCUIT_NAME> <OPTIONAL-INPUT.json>` to verify the proof, with optional alternative input json.
 
 `yarn draft <CIRCUIT_NAME> <OVERWRITE_EXISTING>` to generate a new circuit template, with option to overwrite circuit with existing name.
+
+`yarn call <CIRCUIT_NAME> <OPTIONAL-INPUT.json>` to generate solidity call data for `verifyProof()` in `verifier.sol`, with optional alternative input json.
