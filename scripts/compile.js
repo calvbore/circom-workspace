@@ -20,7 +20,7 @@ if (process.argv.length < 3 || process.argv.length > 4) {
 const cwd = process.cwd();
 
 for (circuitName of circuitsList.split(',')) {
-  if (!process.env[circuitName + '_beacon']) {
+  if (!process.env['beacon']) {
     console.log('ERROR! you probably dont have an .env file');
     process.exit(1);
   }
