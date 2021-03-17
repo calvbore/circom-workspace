@@ -24,7 +24,7 @@ function p256(n) {
     return nstr;
 }
 
-// copy pasta zkeyExportSolidityCalldata from snarkjs cli.cjs line 6984 and some modifications.
+// copy pasta zkeyExportSolidityCalldata from snarkjs cli.cjs line 6984 with some modifications.
 async function genSolidityCalldata(publicName, proofName) {
 
     // const pub = unstringifyBigInts$1(JSON.parse(publicName, "utf8"));
