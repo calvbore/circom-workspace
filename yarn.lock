@@ -117,9 +117,9 @@ blake2b-wasm@^1.1.0:
   dependencies:
     nanoassert "^1.0.0"
 
-"blake2b-wasm@git+https://github.com/jbaylina/blake2b-wasm.git":
+"blake2b-wasm@https://github.com/jbaylina/blake2b-wasm.git":
   version "2.1.0"
-  resolved "git+https://github.com/jbaylina/blake2b-wasm.git#0d5f024b212429c7f50a7f533aa3a2406b5b42b3"
+  resolved "https://github.com/jbaylina/blake2b-wasm.git#0d5f024b212429c7f50a7f533aa3a2406b5b42b3"
   dependencies:
     nanoassert "^1.0.0"
 
@@ -231,13 +231,13 @@ circom@0.5.33:
     tmp-promise "^2.0.2"
     wasmbuilder "0.0.10"
 
-circom@^0.5.34:
-  version "0.5.35"
-  resolved "https://registry.yarnpkg.com/circom/-/circom-0.5.35.tgz#e59291f18996656c85e3f84a90bb653022b9f673"
-  integrity sha512-fUjYTyU75TrA54IPqHt+3VyRWVL82jdbiW68NC9CdtwVrXID+G2cED4XPlsVIKuGI8NFl1LzapELv6DRjS363w==
+circom@^0.5.38:
+  version "0.5.38"
+  resolved "https://registry.yarnpkg.com/circom/-/circom-0.5.38.tgz#c099fb196085837575fb266f37b0516b1ec56eb5"
+  integrity sha512-PFlXto8gDysUlwk6z/GYbn1Mv5BtW9BI4769N9gSP0/7KDNSqLNyVmL4DgMLc67/EpG4qJLGch3SdgzQD+/cfw==
   dependencies:
     chai "^4.2.0"
-    circom_runtime "0.1.9"
+    circom_runtime "0.1.12"
     fastfile "0.0.18"
     ffiasm "0.1.1"
     ffjavascript "0.2.22"
@@ -246,6 +246,14 @@ circom@^0.5.34:
     r1csfile "0.0.16"
     tmp-promise "^2.0.2"
     wasmbuilder "0.0.10"
+
+circom_runtime@0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/circom_runtime/-/circom_runtime-0.1.12.tgz#e1a302c6fe8cec390f035c2e7a8496cfa7cfb4a2"
+  integrity sha512-R+QT9HS9w71cmGmWIn+PSyD3aHyR5JZBiVvxOjCfn12wwnpuFwBjdMG7he+v8h/oQD1mDRAu2KrBeL4mAt5s4A==
+  dependencies:
+    ffjavascript "0.2.34"
+    fnv-plus "^1.3.1"
 
 circom_runtime@0.1.13:
   version "0.1.13"
@@ -259,14 +267,6 @@ circom_runtime@0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/circom_runtime/-/circom_runtime-0.1.8.tgz#d967a1618fe5290849f9c0bbffb6b97b95c0f1c8"
   integrity sha512-5ZmzCyidkNPb1zZsJGRXTuWcJ6kW6+gRBtHgf2tFqTh5dUyWVVPH0Zg7AsU2ijPr1AmYZUlme0yORUZK5HrjOA==
-  dependencies:
-    ffjavascript "0.2.10"
-    fnv-plus "^1.3.1"
-
-circom_runtime@0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/circom_runtime/-/circom_runtime-0.1.9.tgz#99b8fd60d858e00174537b9d502e9913592d7b08"
-  integrity sha512-eh34quaGpeEWXthnhmC9zpoBL/5zJ0mGDbPT/plb/xVmFaKxJDcLuCr2sma5s3il8AYlEIb/nbqytojyI3TWDQ==
   dependencies:
     ffjavascript "0.2.10"
     fnv-plus "^1.3.1"
@@ -436,6 +436,16 @@ ffjavascript@0.2.22:
   dependencies:
     big-integer "^1.6.48"
     wasmcurves "0.0.12"
+    worker-threads "^1.0.0"
+
+ffjavascript@0.2.34:
+  version "0.2.34"
+  resolved "https://registry.yarnpkg.com/ffjavascript/-/ffjavascript-0.2.34.tgz#e0607d1635ad06e8519268af475bc90deac60fbd"
+  integrity sha512-fq/qfJluC4spiOD1lp5jfckZVnS0o0kI5eKXVLw7UKwIwbNr+NBMBveBVcidSfMizF87T6wb7NBtLSdckQiAnQ==
+  dependencies:
+    big-integer "^1.6.48"
+    mocha "^8.2.1"
+    wasmcurves "0.0.14"
     worker-threads "^1.0.0"
 
 ffjavascript@0.2.35:
