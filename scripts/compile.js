@@ -60,7 +60,7 @@ for (circuitName of circuitsList.split(',')) {
         'npx snarkjs zkey beacon circuit_' +
           circuitName +
           '.zkey circuit.zkey ' +
-          process.env[circuitName + '_beacon'] +
+          process.env['beacon'] +
           ' 10',
         { stdio: 'inherit' }
       );
